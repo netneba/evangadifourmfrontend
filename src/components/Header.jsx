@@ -25,7 +25,10 @@ const Header = () => {
             <>
               {/* Show welcome message and logout button */}
               <span className="text-light me-3">Welcome, {user.username}</span>
-              <button className="btn btn-outline-warning btn-sm" onClick={handleLogout}>
+              <button
+                className="btn btn-outline-warning btn-sm"
+                onClick={handleLogout}
+              >
                 Logout
               </button>
             </>
