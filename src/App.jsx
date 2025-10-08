@@ -14,7 +14,7 @@ import Register from "./pages/Register";
 export const AppState = createContext(); 
 function App() {
   // track logged-in user
-  const [user, setUser] = useState(null); 
+  const [user, setUser] = useState(null);
   // get current route
   const location = useLocation(); 
 
