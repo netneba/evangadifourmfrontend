@@ -1,0 +1,101 @@
+/* 🌅 Background and layout */
+.bgWrap {
+  width: 100%;
+  min-height: 100vh;
+  padding: 60px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  text-align: center;
+  backdrop-filter: blur(2px);
+}
+
+/* 🔍 Search container */
+.searchcont {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 90%;
+  max-width: 550px;
+  margin: 20px auto 40px;
+  position: relative;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border-radius: 50px;
+  overflow: hidden;
+  background-color: rgba(255, 255, 255, 0.9);
+  transition: transform 0.2s ease;
+}
+
+.search-cont:hover {
+  transform: scale(1.03);
+}
+
+/* 🧠 Input field */
+.search {
+  flex: 1;
+  height: 3rem;
+  border: none;
+  outline: none;
+  padding: 0 20px;
+  border-radius: 50px 0 0 50px;
+  background-color: transparent;
+  font-size: 1rem;
+  color: #333;
+}
+
+.search::placeholder {
+  color: #999;
+  font-style: italic;
+}
+
+/* 🟧 Search icon button */
+.search_icon {
+  background-color: #ff8500;
+  width: 3.5rem;
+  height: 3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0 50px 50px 0;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.search_icon:hover {
+  background-color: #ff9c33;
+  transform: scale(1.1);
+}
+
+.search_icon svg {
+  color: white;
+  transition: transform 0.2s ease;
+}
+
+.search_icon:hover svg {
+  transform: rotate(10deg);
+}
+
+/* 💬 Responsive styles */
+@media (max-width: 600px) {
+  .search-cont {
+    width: 100%;
+    margin: 15px auto 30px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .search {
+    font-size: 0.9rem;
+    height: 2.5rem;
+  }
+
+  .search_icon {
+    width: 2.8rem;
+    height: 2.5rem;
+  }
+
+  .search_icon svg {
+    width: 22px;
+    height: 22px;
+  }
+}
