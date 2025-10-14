@@ -2,11 +2,13 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "../axios/axios";
 import AboutMessage from "./AboutMessage";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 function Register() {
   const navigate = useNavigate(); // to redirect after successful registration
 
-  // Track form input values
+  // Track form input values // Form state
+
   const [formData, setFormData] = useState({
     first_name: "",
     last_name: "",
@@ -14,18 +16,27 @@ function Register() {
     email: "",
     password: "",
   });
-
+  // UI state
   const [loading, setLoading] = useState(false); // Track form submission loading
   const [error, setError] = useState(null); // Track general error message
   const [fieldErrors, setFieldErrors] = useState({}); // Track which fields are invalid
+  const [showPassword, setShowPassword] = useState(false);
 
-  // Handle input changes
+  // Toggle password visibility
+  const handleTogglePassword = () => {
+    setShowPassword(!showPassword);
+  };
+
+  // Handle input changes 
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value }); // Update form state
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+    // Update form state
+
     setFieldErrors({ ...fieldErrors, [e.target.name]: false }); // Reset field highlight on change
   };
 
   // Determine input CSS class based on error state
+
   const inputClass = (field) =>
     fieldErrors[field] ? "form-control border-danger" : "form-control";
 
@@ -38,6 +49,7 @@ function Register() {
     // Frontend validation: check required fields
     let tempFieldErrors = {};
     let hasError = false;
+    // Checks if each input is filled.
 
     if (!formData.email) {
       tempFieldErrors.email = true;
@@ -77,8 +89,10 @@ function Register() {
       // Highlight fields based on backend response
       let newFieldErrors = {};
       if (msg.toLowerCase().includes("email")) newFieldErrors.email = true;
-      if (msg.toLowerCase().includes("username")) newFieldErrors.username = true;
-      if (msg.toLowerCase().includes("password")) newFieldErrors.password = true;
+      if (msg.toLowerCase().includes("username"))
+        newFieldErrors.username = true;
+      if (msg.toLowerCase().includes("password"))
+        newFieldErrors.password = true;
       setFieldErrors(newFieldErrors);
     }
 
@@ -93,7 +107,8 @@ function Register() {
           <div className="p-4 shadow rounded">
             <h2 className="text-center mb-4">Register</h2>
 
-            {error && <div className="alert alert-danger">{error}</div>} {/* Display error */}
+            {error && <div className="alert alert-danger">{error}</div>}
+            {/* Display error */}
 
             <form onSubmit={handleSubmit} className="d-flex flex-column gap-3">
               {/* Email */}
@@ -137,14 +152,31 @@ function Register() {
               />
 
               {/* Password */}
-              <input
-                type="password"
-                name="password"
-                placeholder="Password"
-                value={formData.password}
-                onChange={handleChange}
-                className={inputClass("password")} // Highlight if error
-              />
+              {/* Password with toggle */}
+              <div style={{ position: "relative" }}>
+                <input
+                  type={showPassword ? "text" : "password"}
+                  name="password"
+                  placeholder="Password"
+                  value={formData.password}
+                  onChange={handleChange}
+                  className={inputClass("password")}
+                  style={{ paddingRight: "40px" }}
+                />
+                <span
+                  onClick={handleTogglePassword}
+                  style={{
+                    position: "absolute",
+                    right: "30px",
+                    top: "50%",
+                    transform: "translateY(-50%)",
+                    cursor: "pointer",
+                    color: "#555",
+                  }}
+                >
+                  {showPassword ? <FaEyeSlash /> : <FaEye />}
+                </span>
+              </div>
 
               <button
                 type="submit"
