@@ -1,0 +1,127 @@
+/* 🌟 Base navbar */
+.navbar {
+  padding: 0.8rem 2rem;
+  background-color: #ffffff !important;
+  border-bottom: 2px solid #f5f5f5;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+/* 🖼️ Logo styling */
+.logo {
+  height: 40px;
+  width: auto;
+  display: block;
+  margin-left:80%;
+  transition: transform 0.3s ease;
+}
+
+.logo:hover {
+  transform: scale(1.05);
+}
+
+/* 🔠 Brand container */
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 0;
+}
+
+/* 📎 Nav links */
+.navLinks {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+/* 🔗 Regular link style */
+.link {
+  color: #0c0c0c;
+  font-weight: 600;
+  text-decoration: none;
+  font-size: 1rem;
+  transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.link:hover {
+  color: #ff9b21;
+  transform: translateY(-1px);
+}
+
+/* 🟧 Shared button styles */
+.btn {
+  font-weight: 600;
+  border-radius: 8px;
+  padding: 8px 18px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  font-size: 0.9rem;
+  border: none;
+}
+
+/* 🟧 Login button */
+.loginBtn {
+  background-color: #ff8500;
+  color: #fff;
+}
+
+.loginBtn:hover {
+  background-color: #ff9b21;
+  box-shadow: 0 3px 8px rgba(255, 133, 0, 0.3);
+}
+
+/* 🔵 Register button */
+.registerBtn {
+  background-color: #4c6ef5;
+  color: #fff;
+}
+
+.registerBtn:hover {
+  background-color: #5a7fff;
+  box-shadow: 0 3px 8px rgba(76, 110, 245, 0.3);
+}
+
+/* 👋 Welcome text */
+.welcomeText {
+  font-weight: 600;
+  color: #333;
+}
+
+/* 📱 Responsive layout */
+@media (max-width: 992px) {
+  .navbar {
+    padding: 0.6rem 1rem;
+  }
+
+  .logo {
+    height: 45px;
+  }
+
+  .navLinks {
+    gap: 0.8rem;
+  }
+
+  .btn {
+    padding: 6px 12px;
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .navLinks {
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    width: 100%;
+  }
+
+  .brand {
+    margin-bottom: 0.5rem;
+  }
+}

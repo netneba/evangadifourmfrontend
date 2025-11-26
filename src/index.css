@@ -1,0 +1,9 @@
+body {
+  background-image: url("./assets/bg-svg-f.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed; 
+  min-height: 100vh;
+}
+
